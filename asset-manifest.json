@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/countryquiz/static/css/main.f45d3a2d.chunk.css",
-    "main.js": "/countryquiz/static/js/main.d7c6536e.chunk.js",
-    "main.js.map": "/countryquiz/static/js/main.d7c6536e.chunk.js.map",
+    "main.js": "/countryquiz/static/js/main.d95fa9de.chunk.js",
+    "main.js.map": "/countryquiz/static/js/main.d95fa9de.chunk.js.map",
     "runtime-main.js": "/countryquiz/static/js/runtime-main.512fb19e.js",
     "runtime-main.js.map": "/countryquiz/static/js/runtime-main.512fb19e.js.map",
-    "static/js/2.5e208bed.chunk.js": "/countryquiz/static/js/2.5e208bed.chunk.js",
-    "static/js/2.5e208bed.chunk.js.map": "/countryquiz/static/js/2.5e208bed.chunk.js.map",
+    "static/js/2.47491767.chunk.js": "/countryquiz/static/js/2.47491767.chunk.js",
+    "static/js/2.47491767.chunk.js.map": "/countryquiz/static/js/2.47491767.chunk.js.map",
     "index.html": "/countryquiz/index.html",
     "static/css/main.f45d3a2d.chunk.css.map": "/countryquiz/static/css/main.f45d3a2d.chunk.css.map",
-    "static/js/2.5e208bed.chunk.js.LICENSE.txt": "/countryquiz/static/js/2.5e208bed.chunk.js.LICENSE.txt"
+    "static/js/2.47491767.chunk.js.LICENSE.txt": "/countryquiz/static/js/2.47491767.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.512fb19e.js",
-    "static/js/2.5e208bed.chunk.js",
+    "static/js/2.47491767.chunk.js",
     "static/css/main.f45d3a2d.chunk.css",
-    "static/js/main.d7c6536e.chunk.js"
+    "static/js/main.d95fa9de.chunk.js"
   ]
 }
