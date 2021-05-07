@@ -4,9 +4,9 @@ import React, { useContext } from 'react'
 import Zoom from 'react-reveal/Zoom'
 
 import countryContext from '../Provider/CountryContext';
+
+import Results from './Results';
 import Button from './Button';
-
-
 import {quiz} from '../images';
 
 const useStyles=makeStyles((theme)=>({
@@ -27,8 +27,8 @@ const useStyles=makeStyles((theme)=>({
         flexDirection:"column",
         backgroundColor:"#fff",
         borderRadius:"24px",
-        minHeight:"55vh",
         paddingTop:"3rem",
+        paddingBottom:"1rem",
         [theme.breakpoints.down("xs")]:{
             minWidth:"unset",
         }
@@ -83,12 +83,12 @@ function CapitalGame() {
     const classes=useStyles();
     const options=["A","B","C","D"];
 
-    const {answersCapital,answerCapitalCorrect,checked,attempts,resetCapitalQuestions}=useContext(countryContext);
+    const {answersCapital,answerCapitalCorrect,checked,stillPlay,resetCapitalQuestions}=useContext(countryContext);
 
     return (
         
         <>
-            {attempts<5 && <Zoom>
+            {stillPlay && <Zoom>
                 <Container>
                     <Typography className={classes.title}>
                         Country Quiz
@@ -118,6 +118,7 @@ function CapitalGame() {
                     </Container>
                 </Container>           
             </Zoom> }
+            {!stillPlay && <Results />}
             
         </> 
         

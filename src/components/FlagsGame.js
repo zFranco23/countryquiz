@@ -4,9 +4,9 @@ import React, { useContext } from 'react'
 import Zoom from 'react-reveal/Zoom'
 import countryContext from '../Provider/CountryContext';
 
+import Results from './Results';
 import Button from './Button';
 import {quiz} from '../images';
-
 
 const useStyles=makeStyles((theme)=>({
     title:{
@@ -16,7 +16,7 @@ const useStyles=makeStyles((theme)=>({
         color:"#fff",
         fontWeight:"700",
         [theme.breakpoints.down("xs")]:{
-            fontSize:"25px",
+            fontSize:"22px",
         }
     },
     containerCard:{
@@ -26,12 +26,7 @@ const useStyles=makeStyles((theme)=>({
         flexDirection:"column",
         backgroundColor:"#fff",
         borderRadius:"24px",
-        minHeight:"75vh",
         paddingTop:"3rem",
-        [theme.breakpoints.down("xs")]:{
-            maxWidth:"300px",
-        }
-
     },
     flag:{
         width:"80px",
@@ -88,15 +83,15 @@ function FlagsGame() {
     const classes=useStyles();
     const options=["A","B","C","D"];
 
-    const {answerFlagCorrect,answersFlag,checked,resetFlagQuestions,attempts}=useContext(countryContext);
+    const {answerFlagCorrect,answersFlag,checked,resetFlagQuestions,stillPlay}=useContext(countryContext);
     return (
         <>
-            {attempts<5 && <Zoom>
+            {stillPlay && <Zoom>
                 <Container>
                     <Typography className={classes.title}>
                         Country Quiz
                     </Typography>
-                    <Container className={classes.containerCard}>
+                    <Container maxWidth="xs" className={classes.containerCard}>
                         <img src={quiz} alt="quiz"  className={classes.img}/>
                         <img src={answerFlagCorrect.flag} alt={`flag-${answerFlagCorrect.name}`} className={classes.flag}/>
                         <Typography className={classes.text}>
@@ -121,6 +116,7 @@ function FlagsGame() {
                 </Container>
                 
             </Zoom>}
+            {!stillPlay && <Results />}
         </>
 
         

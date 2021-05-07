@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core'
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 
 import countryContext from '../Provider/CountryContext';
 
@@ -89,7 +89,7 @@ function Button({children, i,}) {
     const classes=useStyles();
 
     return (
-        <div className={`${answerType[i]!=="initial" && answerType[i]!=="correct" && answerType[i]!=="incorrect" ? classes.btn : ""} ${answerType[i]=="initial" && classes.initial} ${answerType[i]=="correct" && classes.correct } ${answerType[i]=="incorrect" && classes.incorrect }`} onClick={()=>checkCorrects(i)}>
+        <div className={`${answerType[i]!=="initial" && answerType[i]!=="correct" && answerType[i]!=="incorrect" ? classes.btn : ""} ${answerType[i]==="initial" && classes.initial} ${answerType[i]==="correct" && classes.correct } ${answerType[i]==="incorrect" && classes.incorrect }`} onClick={()=>checkCorrects(i)}>
             {children}
         </div>
     )

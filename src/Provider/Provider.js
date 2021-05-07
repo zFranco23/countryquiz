@@ -8,19 +8,20 @@ function Provider({children}) {
     const [dataCountries,setDataCountries]=useState([]);
 
     /*Tipo de juego */
-    const [attempts,setAttempts]=useState(0);
     const [initCapitals,setInitCapitals]=useState(false);
     const [answerCapitalCorrect,setAnswerCapitalCorrect]=useState(null);
     const [indexCorrect,setIndexCorrect]=useState(null);
     const [answersCapital,setAnswersCapital]=useState([]);
     const [answerType,setAnswerType]=useState([]);
     const [checked,setChecked]=useState(false);
-
+    const [countCorrects,setCountCorrects]=useState(0);
     const [initFlags,setInitFlags]=useState(false);
     const [answerFlagCorrect,setAnswerFlagCorrect]=useState(null);
     const [indexCorrectFlag,setIndexCorrectFlag]=useState(null);
     const [answersFlag,setAnswersFlag]=useState([]);
 
+    const [iSelected,setISelected]=useState(null);
+    const [stillPlay,setStillPlay]=useState(true);
 
 
     const getCountries = async() =>{
@@ -51,11 +52,13 @@ function Provider({children}) {
     }
 
     const checkCorrects = (iSelected) =>{
+        setISelected(iSelected);
         if(initCapitals){
             let arrayTypes=new Array();
             answersCapital.map((el,i)=>{
                 if(i === iSelected){
                     if(i=== indexCorrect){
+                        setCountCorrects(countCorrects+1);
                         arrayTypes.push("correct");
                     }else{
                         arrayTypes.push("incorrect");
@@ -76,6 +79,7 @@ function Provider({children}) {
             answersFlag.map((el,i)=>{
                 if(i === iSelected){
                     if(i=== indexCorrectFlag){
+                        setCountCorrects(countCorrects+1);
                         arrayTypes.push("correct");
                     }else{
                         arrayTypes.push("incorrect");
@@ -94,10 +98,22 @@ function Provider({children}) {
         
     }
     const resetCapitalQuestions = () =>{
-        generateQuestionsCapital();
+        let truthy;
+        if(iSelected===indexCorrect){
+            truthy=true;
+        }
+        if(truthy){
+            generateQuestionsCapital();           
+        }else{
+            setStillPlay(false);
+            setIndexCorrect(null);
+            setAnswerCapitalCorrect(null);
+            setAnswersCapital([]);
+            setISelected(null);
+        }
         setAnswerType([]);
         setChecked(false);
-        setAttempts(attempts+1);
+        
     }
 
     //Flags
@@ -118,12 +134,29 @@ function Provider({children}) {
     }
 
     const resetFlagQuestions = () =>{
-        generateQuestionsFlag();
+        let truthy;
+        if(iSelected===indexCorrectFlag){
+            truthy=true;
+        }
+        if(truthy){
+            generateQuestionsFlag();     
+        }else{
+            setStillPlay(false);
+            setIndexCorrectFlag(null);
+            setAnswerFlagCorrect(null);
+            setAnswersFlag([]);
+            setISelected(null);
+        }
         setAnswerType([]);
         setChecked(false);
-        setAttempts(attempts+1);
+      
     }
 
+    const tryAgain= () =>{
+        setInitCapitals(false);
+        setInitFlags(false);
+        setCountCorrects(0);
+    }
     useEffect(()=>{
         getCountries();
     },[])
@@ -134,21 +167,24 @@ function Provider({children}) {
                 dataCountries,
                 initCapitals,
                 setInitCapitals,
-                attempts,
                 generateQuestionsCapital,
                 answersCapital,
                 answerCapitalCorrect,
                 checkCorrects,
                 checked,
+                countCorrects,
+                setCountCorrects,
                 answerType,
                 resetCapitalQuestions,
-
+                setStillPlay,
+                stillPlay,
                 initFlags,
                 setInitFlags,
                 generateQuestionsFlag,
                 answerFlagCorrect,
                 answersFlag,
                 resetFlagQuestions,
+                tryAgain,
             }}>
             {children}
         </CountryContext.Provider>

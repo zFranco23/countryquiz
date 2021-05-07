@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useContext, useEffect} from 'react'
 import { Container, makeStyles, Typography } from '@material-ui/core';
 
 
@@ -34,8 +34,8 @@ const useStyles=makeStyles((theme)=>({
         flexDirection:"column",
         backgroundColor:"#fff",
         borderRadius:"24px",
-        minHeight:"55vh",
         paddingTop:"3rem",
+        paddingBottom:"2rem",
     },
     text:{
         fontFamily:"Poppins,sans-serif",
@@ -55,6 +55,8 @@ const useStyles=makeStyles((theme)=>({
 function CardHome() {
 
     const {
+        setCountCorrects,
+        setStillPlay,
         setInitCapitals,
         initCapitals,
         generateQuestionsCapital,
@@ -65,13 +67,16 @@ function CardHome() {
     const classes=useStyles();
 
     const handleInitCapitals = () => {
+        setStillPlay(true);
         generateQuestionsCapital();
         setInitCapitals(true);
     }
     const handleInitFlags = () => {
+        setStillPlay(true);
         generateQuestionsFlag();
         setInitFlags(true);
     }
+
     return (
         <div className={classes.root}>
             {initCapitals && !initFlags && <CapitalGame />}
@@ -82,7 +87,7 @@ function CardHome() {
                         <Typography className={classes.title}>
                             Country Quiz
                         </Typography>
-                        <Container className={classes.containerCard}>
+                        <Container maxWidth="xs"className={classes.containerCard}>
                             <Typography className={classes.text}>
                                 We have 2 types of questions
                             </Typography>
