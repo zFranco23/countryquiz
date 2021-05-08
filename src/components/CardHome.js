@@ -17,7 +17,7 @@ const useStyles=makeStyles((theme)=>({
         backgroundRepeat:"no-repeat",
         minHeight:"100vh",
         display:"flex",
-        justifyContent:"center",
+        justifyContent:"space-between",
         flexDirection:"column",
         alignItems:"center",
     },
@@ -50,12 +50,14 @@ const useStyles=makeStyles((theme)=>({
         cursor:"pointer",
         borderRadius:"25px",
         backgroundColor:"#f9a826",
+    },
+    containerMain:{
+        margin:"auto",
     }
 }))
 function CardHome() {
 
     const {
-        setCountCorrects,
         setStillPlay,
         setInitCapitals,
         initCapitals,
@@ -83,7 +85,7 @@ function CardHome() {
             {!initCapitals && initFlags && <FlagsGame />}
             {!initCapitals && !initFlags && 
                 <Zoom>
-                    <div>
+                    <div className={classes.containerMain}>
                         <Typography className={classes.title}>
                             Country Quiz
                         </Typography>
@@ -105,7 +107,7 @@ function CardHome() {
                 </Zoom>
             }
             <Footer />
-            
+                      
         </div>
     )
 }

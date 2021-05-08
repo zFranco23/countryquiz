@@ -42,7 +42,7 @@ function Provider({children}) {
         const correct=Math.round(Math.random()*3);
         setIndexCorrect(correct);
         for(let i=0;i<4;i++){
-            const random=Math.round(Math.random()*dataCountries.length);
+            const random=Math.round(Math.random()*(dataCountries.length-1));
             if(i === correct){
                 setAnswerCapitalCorrect({name : dataCountries[random].name , capital :dataCountries[random].capital});
             }
@@ -124,7 +124,7 @@ function Provider({children}) {
         setIndexCorrectFlag(correctFlag);
 
         for(let i=0;i<4;i++){
-            const random=Math.round(Math.random()*dataCountries.length);
+            const random=Math.round(Math.random()*(dataCountries.length-1));
             if(i == correctFlag){
                 setAnswerFlagCorrect({name : dataCountries[random].name , flag :dataCountries[random].flag});
             }

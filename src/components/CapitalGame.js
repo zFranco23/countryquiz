@@ -2,6 +2,7 @@ import { makeStyles, Typography, Container } from '@material-ui/core';
 import React, { useContext } from 'react'
 
 import Zoom from 'react-reveal/Zoom'
+import Loader from 'react-loader-spinner';
 
 import countryContext from '../Provider/CountryContext';
 
@@ -76,6 +77,10 @@ const useStyles=makeStyles((theme)=>({
         position:"absolute",
         top:-40,
         right:0,
+    },
+    containerMain:{
+        margin:"auto",
+        padding:"15px 10px"
     }
 }))
 function CapitalGame() {
@@ -88,8 +93,10 @@ function CapitalGame() {
     return (
         
         <>
-            {stillPlay && <Zoom>
-                <Container>
+            {stillPlay && (
+                answersCapital.length >0 ? 
+                <Zoom>
+                <div className={classes.containerMain}>
                     <Typography className={classes.title}>
                         Country Quiz
                     </Typography>
@@ -116,8 +123,9 @@ function CapitalGame() {
                         </div>}
                         
                     </Container>
-                </Container>           
-            </Zoom> }
+                </div>           
+            </Zoom> : <Loader type="ThreeDots" color="#DDDDDD" height={28} width={28} />
+            ) }
             {!stillPlay && <Results />}
             
         </> 

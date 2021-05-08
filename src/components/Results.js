@@ -68,6 +68,10 @@ const useStyles=makeStyles((theme)=>({
         fontFamily:"Poppins,sans-serif",
         color:"#1D355D",
         fontWeight:"600",
+    },
+    containerMain:{
+        marginTop:"3rem",
+        padding:"15px 10px",
     }
 }))
 
@@ -77,8 +81,8 @@ function Results() {
     const {countCorrects,tryAgain}=useContext(CountryContext);
     return (
         <div>
-            <Zoom>
-                <Container maxWidth="xs">
+            <Zoom delay={100} >
+                <div className={classes.containerMain}>
                     <Typography className={classes.title}>
                         Country Quiz
                     </Typography>
@@ -99,7 +103,7 @@ function Results() {
                         </div>
                         
                     </Container>
-                </Container>
+                </div>
             </Zoom>
         </div>
     )

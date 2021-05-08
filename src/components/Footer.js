@@ -13,6 +13,12 @@ const useStyles=makeStyles((theme)=>({
     },
     github:{
         textDecoration:"none"
+    },
+    footerText:{
+        textAlign:"center",
+        [theme.breakpoints.down("xs")]:{
+            fontSize:"0.8rem",
+        }
     }
 }))
 function Footer() {
@@ -22,7 +28,7 @@ function Footer() {
         <div className={classes.footer}>
             <div className={classes.flex}>
                 <p className={classes.footerText}>
-                    created by <a href="https://github.com/zFranco23" className={classes.github}>zFranco23</a>
+                    created by <a href="https://github.com/zFranco23" className={classes.github}>zFranco23</a> - devChallenges.io
                 </p>
             </div>
         </div>

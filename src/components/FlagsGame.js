@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 
 import Zoom from 'react-reveal/Zoom'
 import countryContext from '../Provider/CountryContext';
-
+import Loader from 'react-loader-spinner';
 import Results from './Results';
 import Button from './Button';
 import {quiz} from '../images';
@@ -76,6 +76,10 @@ const useStyles=makeStyles((theme)=>({
         position:"absolute",
         top:-40,
         right:0,
+    },
+    containerMain:{
+        margin:"auto",
+        padding:"15px 10px",
     }
 }))
 function FlagsGame() {
@@ -86,8 +90,10 @@ function FlagsGame() {
     const {answerFlagCorrect,answersFlag,checked,resetFlagQuestions,stillPlay}=useContext(countryContext);
     return (
         <>
-            {stillPlay && <Zoom>
-                <Container>
+            {stillPlay && (
+                answersFlag.length>0 ?
+                <Zoom>
+                <div className={classes.containerMain}>
                     <Typography className={classes.title}>
                         Country Quiz
                     </Typography>
@@ -113,9 +119,10 @@ function FlagsGame() {
                             </div>
                         </div>}
                     </Container>
-                </Container>
+                </div>
                 
-            </Zoom>}
+            </Zoom> : <Loader type="ThreeDots" color="#DDDDDD" height={28} width={28} />
+            )}
             {!stillPlay && <Results />}
         </>
 
