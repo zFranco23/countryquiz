@@ -26,10 +26,10 @@ function Provider({children}) {
 
     const getCountries = async() =>{
 
-        const response= await fetch("https://restcountries.eu/rest/v2/all");
+        const response= await fetch("https://restcountries.com/v2/all");
         const data = await response.json();
 
-        const dataTemporal = data.map(({name,capital,flag})=>({name,capital,flag}));
+        const dataTemporal = data.map(({name,capital,flags})=>({name,capital,flag : flags.svg}));
         const dataCountries=dataTemporal.filter((el)=> el.capital!=="" && el.name!=="");
         setDataCountries(dataCountries);
     }
